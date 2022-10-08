@@ -14,7 +14,5 @@ def get_jenkins_public_url():
     for entry in datajson["tunnels"]:
         if entry["config"]["addr"] == "http://jenkins:8080":
             return entry["public_url"]
-
-
-
 print(get_jenkins_public_url())
+

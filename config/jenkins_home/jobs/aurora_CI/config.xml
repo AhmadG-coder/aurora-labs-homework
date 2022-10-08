@@ -1,0 +1,50 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@1239.v71b_b_a_124a_725">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@2.2114.v2654ca_721309"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@2.2114.v2654ca_721309">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+      <triggers>
+        <com.cloudbees.jenkins.GitHubPushTrigger plugin="github@1.35.0">
+          <spec></spec>
+        </com.cloudbees.jenkins.GitHubPushTrigger>
+      </triggers>
+    </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2802.v5ea_628154b_c2">
+    <script>pipeline {
+    agent any
+
+    stages {
+        stage(&apos;checkout&apos;) {
+            steps {
+                checkout([$class: &apos;GitSCM&apos;, branches: [[name: &apos;*/main&apos;]], extensions: [], userRemoteConfigs: [[url: &apos;https://github.com/AhmadG-coder/aurora-labs-homework.git&apos;]]])
+            }
+        }
+        stage(&apos;Lint&apos;) {
+            steps {
+                sh &quot;pylint main.py&quot;
+            }
+        }
+        stage(&apos;run&apos;) {
+            steps {
+                sh &quot;python3 main.py&quot;
+            }
+        }
+    }
+}
+</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

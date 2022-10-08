@@ -1,0 +1,16 @@
+services:
+  ngrok:
+    image: shkoliar/ngrok:latest
+    ports:
+      - 4551:4551
+    links:
+      - jenkins
+    environment:
+      - DOMAIN=jenkins
+      - PORT=8080
+      - AUTH_TOKEN=2Fl0ufh4YS21HDkzF3EgWd1k4nj_22urjmfKBPc4FMDm5vawe
+    depends_on:
+      - jenkins
+  jenkins:
+    image: jenkins/jenkins:lts
+
