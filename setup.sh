@@ -10,8 +10,10 @@ echo $json_configuration > webhook_configuration.json
 curl \
   -X PATCH \
     -H "Accept: application/vnd.github+json" \
-    -H "Authorization: Bearer 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  " \
+    -H "Authorization: Bearer ${{ secrets.AURORA_ACCESS_TOKEN }}  " \
     -d "$json_configuration" \
       https://api.github.com/repos/AhmadG-coder/aurora-labs-homework/hooks/383056256/config
 
 
+echo "jenkins will be available for 10 mins"
+sleep 600
