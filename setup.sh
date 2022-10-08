@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+sudo chmod 777 -R config/
 docker-compose up -d
 sleep 10 # until URL is available
 jenkins_url=$(python3 setup_webhooks.py)
