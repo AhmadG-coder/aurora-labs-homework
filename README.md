@@ -1,6 +1,6 @@
 # aurora-labs-homework #
 Hi Aurora labs, in order to run the containers:
-- go to github actions and run the only workflow there
+run the command sent in the e-mail
 
 ##### jenkins credentials: ###
 - username: admin
@@ -13,9 +13,8 @@ for running setup script:
 
 
 ### Disclaimers: ###
-- couldnt figure out a way to run the script locally, cause: \
-  in order to update the repository webhook url to the new jenkins site, an access token is needed
-  if the access token is committed to the SCM, github deletes it the only options is to add it \
-as an environment secret -> it can only be accessed via github actions
+- the string sent in the E-mail is the access token couldnt wrap a proper solution, issue: \
+if the github access token is committed to the repository, it's deleted \
+so full cmd cant be sent here since it will contain the access token
 
 
